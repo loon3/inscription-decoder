@@ -8,6 +8,5 @@ npm run dev
 yarn dev
 ```
 
-Open [http://localhost:3000/?tx=[Inscription tx id]](http://localhost:3000) with your browser to see the inscription.
 
 
