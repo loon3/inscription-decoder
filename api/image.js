@@ -27,7 +27,7 @@ function getInscription(raw){
     return {hex: combinedHexString, mime: mime}
 }
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+module.exports = async (req, res) => {
     const {
         query: { tx },
     } = req;
