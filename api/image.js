@@ -29,9 +29,9 @@ function getInscription(raw){
 
 module.exports = async (req, res) => {
     const {
-        query: { tx },
+        query: { tx, type },
     } = req;
-    
+
     const txUrl = "https://api.blockcypher.com/v1/btc/main/txs/"+tx+"?includeHex=true" 
     const response = await fetch(txUrl);
 
@@ -39,10 +39,24 @@ module.exports = async (req, res) => {
     const raw = data.hex
     const imageData = getInscription(raw)
 
-    const buffer = new Buffer.from(imageData.hex, 'hex');
-
-    res.statusCode = 200;
-    res.setHeader('Content-Type', imageData.mime);
-    res.end(buffer);
-  
+    const allowableTypes = ['image/png', 'image/jpeg', 'image/gif']
+    
+    if (type === 'json' && allowableTypes.includes(imageData.mime)){    
+        const jsonData = {
+            "images": [
+                {
+                    "type": "large",
+                    "data": "data:"+imageData.mime+";base64,"+imageData.hex
+                }
+            ]
+        }
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'application/json');
+        res.end(JSON.stringify(jsonData));
+    } else {
+        const buffer = new Buffer.from(imageData.hex, 'hex');
+        res.statusCode = 200;
+        res.setHeader('Content-Type', imageData.mime);
+        res.end(buffer);
+    }
 };
