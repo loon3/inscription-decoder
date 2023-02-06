@@ -42,11 +42,14 @@ module.exports = async (req, res) => {
     const allowableTypes = ['image/png', 'image/jpeg', 'image/gif']
     
     if (type === 'json' && allowableTypes.includes(imageData.mime)){    
+
+        const imageDataBase64 = Buffer.from(imageData.hex, 'hex').toString('base64')
+
         const jsonData = {
             "images": [
                 {
                     "type": "large",
-                    "data": "data:"+imageData.mime+";base64,"+imageData.hex
+                    "data": "data:"+imageData.mime+";base64,"+imageDataBase64
                 }
             ]
         }
