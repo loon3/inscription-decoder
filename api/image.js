@@ -1,38 +1,21 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-
-const bitcoinjs = require('bitcoinjs-lib')
-
-function getInscription(raw){
-    const tx = bitcoinjs.Transaction.fromHex(raw)
-    //console.log(bitcoinjs)
-
-    const witness = tx.ins[0].witness[1];
-    const script = bitcoinjs.script.decompile(witness);
-
-    //get MIME
-    const hex = Buffer.from(script[6]).toString('hex');
-    const mime = Buffer.from(hex, 'hex').toString();
-    //console.log(mime)
-
-    //get file data
-    script.pop()
-    script.splice(0, 8)
-
-    const hexStrings = script.map(array => {
-    return Array.from(array, x => ('00' + x.toString(16)).slice(-2)).join('');
-    });
-
-    const combinedHexString = hexStrings.join('');
-
-    return {hex: combinedHexString, mime: mime}
-}
+import { base58ToHex, base64ToHex, getIcon, getInscription } from '../lib/util.js'
 
 module.exports = async (req, res) => {
     const {
-        query: { tx, type },
+        query: { tx, type, format },
     } = req;
 
-    const txUrl = "https://api.blockcypher.com/v1/btc/main/txs/"+tx+"?includeHex=true" 
+    let txid = tx
+
+    if (format === 'base64') {
+        txid = base64ToHex(tx)
+    }
+
+    if (format === 'base58') {
+        txid = base58ToHex(tx)
+    }
+ 
+    const txUrl = "https://api.blockcypher.com/v1/btc/main/txs/"+txid+"?includeHex=true" 
     const response = await fetch(txUrl);
 
     const data = await response.json()
@@ -45,12 +28,19 @@ module.exports = async (req, res) => {
 
         const imageDataBase64 = Buffer.from(imageData.hex, 'hex').toString('base64')
 
+        // const iconDataBase64 = await getIcon(imageData.mime, imageData.hex)
+        // {
+        //     "type": "icon",
+        //     "data": iconDataBase64
+        // },
+
         const jsonData = {
             "images": [
                 {
                     "type": "large",
                     "data": "data:"+imageData.mime+";base64,"+imageDataBase64
-                }
+                },
+
             ]
         }
         res.statusCode = 200;
