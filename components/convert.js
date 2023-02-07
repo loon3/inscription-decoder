@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { hexToBase64 } from '../lib/util.js'
 import styles from '../styles/HexToBase64.module.css';
 
-export default function HexToBase64(){
+export default function HexToBase64Form(){
   const [hexString, setHexString] = useState('');
   const [base64String, setBase64String] = useState('');
   const [url, setUrl] = useState('');

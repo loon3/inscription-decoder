@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-import { HexToBase64 } from '../components/convert.js'
+
 
 
 export default function Home() {
@@ -26,7 +26,7 @@ export default function Home() {
         </p>
        
       </main>
-      <HexToBase64 />
+
     </div>
   )
 }

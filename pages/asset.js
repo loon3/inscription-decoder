@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
-import HexToBase64 from '../components/convert'
+import HexToBase64Form from '../components/convert'
 
 
 
@@ -21,7 +21,7 @@ export default function Home() {
           Paste your Inscription Reveal Tx ID into the input field below. The tool will return the compatible asset description.
         </p>
 
-        <HexToBase64 />
+        <HexToBase64Form />
         
        
      
