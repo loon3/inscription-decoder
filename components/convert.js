@@ -7,16 +7,19 @@ export default function HexToBase64Form(){
   const [hexString, setHexString] = useState('');
   const [base64String, setBase64String] = useState('');
   const [url, setUrl] = useState('');
+  const [urlDirect, setUrlDirect] = useState('');
 
   const handleHexStringChange = (event) => {
     setHexString(event.target.value);
 
-    //let result = 'ORD:'+bs58.encode(Buffer.from(event.target.value, 'hex'));
     let result = hexToBase64(event.target.value);
 
     let hostname = window.location.hostname;
     let imageUrl = "https://"+hostname+"/api/image?type=json&format=base64&tx="+encodeURIComponent(result);
     setUrl(imageUrl);
+
+    let imageUrlDirect = "https://"+hostname+"/api/image?tx="+event.target.value;
+    setUrlDirect(imageUrlDirect);
 
     let description = "ORD:"+result
     setBase64String(description);
@@ -36,17 +39,20 @@ export default function HexToBase64Form(){
       </div>
       {base64String && (
         <>
-      <div className={styles.outputContainer}>
-        <div>
-        <label htmlFor="base64-string-output" className={styles.label}>Asset Description:</label>
-        <output id="base64-string-output" className={styles.output}>{base64String}</output>
-        </div>
-        
-      </div>
-      <div className={styles.imageLink}>
-      <a href={url}>{url}</a>
-      </div>
-      </>
+            <div className={styles.outputContainer}>
+                <div>
+                <label htmlFor="base64-string-output" className={styles.label}>Asset Description:</label>
+                <output id="base64-string-output" className={styles.output}>{base64String}</output>
+                </div>
+                
+            </div>
+            <div className={styles.imageLink}>
+                <a href={url}>JSON Url</a>
+            </div>
+            <div className={styles.imageLink}>
+                <a href={urlDirect}>Image Url</a>
+            </div>
+        </>
       )}
     </div>
   );

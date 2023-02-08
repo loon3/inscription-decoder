@@ -14,12 +14,22 @@ module.exports = async (req, res) => {
     if (format === 'base58') {
         txid = base58ToHex(tx)
     }
- 
-    const txUrl = "https://api.blockcypher.com/v1/btc/main/txs/"+txid+"?includeHex=true" 
-    const response = await fetch(txUrl);
 
-    const data = await response.json()
-    const raw = data.hex
+    const txUrlBlockCypher = "https://api.blockcypher.com/v1/btc/main/txs/"+txid+"?includeHex=true" 
+    const txUrlBlockchain = "https://blockchain.info/rawtx/"+txid+"?format=hex&cors=true" 
+
+    
+    const raw = await fetch(txUrlBlockCypher).then(async (response) => {
+                    if (!response.ok) {
+                        const secondResponse = await fetch(txUrlBlockchain);
+                        return secondResponse.text();
+                    }
+                    const data = await response.json();
+                    return data.hex;
+                }).catch((error) => {
+                    throw new Error("Bad response from both servers");
+                });
+    
     const imageData = getInscription(raw)
 
     const allowableTypes = ['image/png', 'image/jpeg', 'image/gif']

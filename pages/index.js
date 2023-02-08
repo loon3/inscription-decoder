@@ -1,6 +1,6 @@
 import Head from 'next/head'
-import Link from 'next/link'
 import styles from '../styles/Home.module.css'
+import HexToBase64Form from '../components/convert'
 
 
 
@@ -8,37 +8,27 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Ordinal Inscription Decoder</title>
+        <title>Inscription as Asset Image</title>
         <meta name="description" content="Decode ordinal inscriptions using raw tx data from a block explorer" />
       </Head>
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Ordinal Inscription Decoder
+          Inscript.art
         </h1>
 
         <p className={styles.description}>
-          To view inscriptions, use the following path:
+          On-chain Bitcoin NFTs using Counterparty assets and Ordinal Inscriptions
         </p>
 
-        <p>
-          <code className={styles.code}>api/image?tx=[inscription reveal tx id]</code>
+        <p className={styles.description}>
+          Paste your Inscription Reveal Tx ID into the input field below. The tool will return the compatible Counterparty asset description.
         </p>
+
+        <HexToBase64Form />
+        
        
-        <div className={styles.grid}>
-          <Link href="/asset">
-
-          <div className={styles.card}>
-           
-            <h2>
-              Link to Asset <span>-&gt;</span>
-            </h2>
-            <p>
-              Connect an inscription with your Counterparty asset
-            </p>
-          </div>
-          </Link>
-          </div>
+     
       </main>
 
     </div>
