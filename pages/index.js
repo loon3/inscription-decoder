@@ -25,7 +25,7 @@ export default function Home() {
         </p>
 
         <p className={styles.description}>
-          Paste your Inscription Reveal Tx ID into the input field below for your new Counterparty Asset description.
+          Paste your Inscription Reveal Tx ID into the input field below for your new Counterparty Asset Description.
         </p>
 
         <HexToBase64Form />
