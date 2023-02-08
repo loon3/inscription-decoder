@@ -13,10 +13,13 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Inscribe.art
-        </h1>
-
+        <div className={styles.heading}>
+          <h1 className={styles.title}>
+            Inscribe.art
+          </h1>
+        
+          <div><a href="https://github.com/loon3/inscription-decoder" target="_blank" rel="noreferrer" className={styles.linkSmall}>View on Github</a></div>
+        </div>
         <p className={styles.description}>
           Create on-chain Bitcoin NFTs using Counterparty assets and Ordinal Inscriptions
         </p>

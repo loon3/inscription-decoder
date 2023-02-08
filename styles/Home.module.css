@@ -12,6 +12,14 @@
   align-items: center;
 }
 
+.heading {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 2rem;;
+}
+
 .footer {
   display: flex;
   flex: 1;
@@ -101,6 +109,12 @@
   margin: 0;
   font-size: 1.25rem;
   line-height: 1.5;
+}
+
+.linkSmall {
+  text-decoration: underline;
+  color: #0070f3;
+  cursor: pointer;
 }
 
 .logo {
