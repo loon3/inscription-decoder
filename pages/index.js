@@ -21,11 +21,11 @@ export default function Home() {
           <div><a href="https://github.com/loon3/inscription-decoder" target="_blank" rel="noreferrer" className={styles.linkSmall}>View on Github</a></div>
         </div>
         <p className={styles.description}>
-          Create on-chain Bitcoin NFTs using Counterparty assets and Ordinal Inscriptions
+          Create on-chain Bitcoin NFTs using Counterparty Assets (<a href="https://github.com/CounterpartyXCP" target="_blank" rel="noreferrer" className={styles.linkSmall}>github</a>) and Ordinal Inscriptions (<a href="https://github.com/casey/ord" target="_blank" rel="noreferrer" className={styles.linkSmall}>github</a>)
         </p>
 
         <p className={styles.description}>
-          Paste your Inscription Reveal Tx ID into the input field below for your new Counterparty asset description.
+          Paste your Inscription Reveal Tx ID into the input field below for your new Counterparty Asset description.
         </p>
 
         <HexToBase64Form />
