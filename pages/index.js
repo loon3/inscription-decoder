@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Image from 'next/image'
+import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 
 
@@ -18,13 +18,27 @@ export default function Home() {
         </h1>
 
         <p className={styles.description}>
-          To return inscriptions as images, use the following path:
+          To view inscriptions, use the following path:
         </p>
 
         <p>
           <code className={styles.code}>api/image?tx=[inscription reveal tx id]</code>
         </p>
        
+        <div className={styles.grid}>
+          <Link href="/asset">
+
+          <div className={styles.card}>
+           
+            <h2>
+              Link to Asset <span>-&gt;</span>
+            </h2>
+            <p>
+              Connect an inscription with your Counterparty asset
+            </p>
+          </div>
+          </Link>
+          </div>
       </main>
 
     </div>

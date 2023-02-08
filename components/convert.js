@@ -14,7 +14,8 @@ export default function HexToBase64Form(){
     //let result = 'ORD:'+bs58.encode(Buffer.from(event.target.value, 'hex'));
     let result = hexToBase64(event.target.value);
 
-    let imageUrl = "https://inscription-decoder.vercel.app/api/image?type=json&format=base64&tx="+encodeURIComponent(result);
+    let hostname = window.location.hostname;
+    let imageUrl = "https://"+hostname+"/api/image?type=json&format=base64&tx="+encodeURIComponent(result);
     setUrl(imageUrl);
 
     let description = "ORD:"+result
