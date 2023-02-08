@@ -60,6 +60,7 @@ module.exports = async (req, res) => {
     } else {
         const buffer = new Buffer.from(imageData.hex, 'hex');
         res.statusCode = 200;
+        res.setHeader('Access-Control-Allow-Origin', '*')
         res.setHeader('Content-Type', imageData.mime);
         res.end(buffer);
     }
