@@ -37,7 +37,9 @@ export default function HexToBase64Form(){
           className={styles.input}
         />
       </div>
-      {base64String && (
+      
+
+      {base64String ? (
         <>
             <div className={styles.outputContainer}>
                 <div>
@@ -53,6 +55,10 @@ export default function HexToBase64Form(){
                 <a href={urlDirect}>Image Url</a>
             </div>
         </>
+      ):(
+        <div>
+            Valid with inscribed JSON files (<a href="https://github.com/CounterpartyXCP/cips/blob/master/cip-0025/spec-v2.0.0-schema.json" target="_blank" rel="noreferrer" className={styles.linkSmall}>schema</a>) or inscribed images (png, jpeg and gif).
+        </div>
       )}
 
     </div>
