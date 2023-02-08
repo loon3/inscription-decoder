@@ -28,7 +28,7 @@ export default function HexToBase64Form(){
   return (
     <div className={styles.container}>
       <div className={styles.inputContainer}>
-        <label htmlFor="hex-string-input" className={styles.label}>Inscription Reveal Tx ID:</label>
+        <label htmlFor="hex-string-input" className={styles.label}>Your Inscription Reveal Tx ID:</label>
         <input
           id="hex-string-input"
           type="text"
@@ -41,7 +41,7 @@ export default function HexToBase64Form(){
         <>
             <div className={styles.outputContainer}>
                 <div>
-                <label htmlFor="base64-string-output" className={styles.label}>Asset Description:</label>
+                <label htmlFor="base64-string-output" className={styles.label}>Use this Asset Description:</label>
                 <output id="base64-string-output" className={styles.output}>{base64String}</output>
                 </div>
                 
