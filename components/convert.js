@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 // import bs58 from 'bs58';
 import { hexToBase64 } from '../lib/util.js'
 import styles from '../styles/HexToBase64.module.css';
+import homestyles from '../styles/Home.module.css';
 
 export default function HexToBase64Form(){
   const [hexString, setHexString] = useState('');
@@ -57,7 +58,7 @@ export default function HexToBase64Form(){
         </>
       ):(
         <div>
-            Valid with inscribed JSON files (<a href="https://github.com/CounterpartyXCP/cips/blob/master/cip-0025/spec-v2.0.0-schema.json" target="_blank" rel="noreferrer" className={styles.linkSmall}>schema</a>) or inscribed images (png, jpeg and gif).
+            Valid with inscribed JSON files (<a href="https://github.com/CounterpartyXCP/cips/blob/master/cip-0025/spec-v2.0.0-schema.json" target="_blank" rel="noreferrer" className={homestyles.linkSmall}>schema</a>) or inscribed images (png, jpeg and gif).
         </div>
       )}
 
