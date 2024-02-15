@@ -43,10 +43,10 @@ export default function HexToBase64Form(){
       {base64String ? (
         <>
             <div className={styles.outputContainer}>
-                <div>
+          
                 <label htmlFor="base64-string-output" className={styles.label}>Use this Asset Description:</label>
                 <output id="base64-string-output" className={styles.output}>{base64String}</output>
-                </div>
+           
                 
             </div>
             <div className={styles.imageLink}>
