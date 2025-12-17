@@ -58,7 +58,7 @@ export default function HexToBase64Form(){
         </>
       ):(
         <div>
-            Valid with inscribed JSON files (<a href="https://github.com/CounterpartyXCP/cips/blob/master/cip-0025/spec-v2.0.0-schema.json" target="_blank" rel="noreferrer" className={homestyles.linkSmall}>schema</a>) or inscribed images (png, jpeg and gif).
+            Valid with inscribed JSON files (<a href="https://github.com/CounterpartyXCP/cips/blob/master/cip-0025/spec-v2.0.0-schema.json" target="_blank" rel="noreferrer" className={homestyles.linkSmall}>schema</a>) or inscribed images (png, jpeg, gif, webp and avif).
         </div>
       )}
 

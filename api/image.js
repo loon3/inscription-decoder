@@ -32,7 +32,7 @@ module.exports = async (req, res) => {
     
     const imageData = getInscription(raw)
 
-    const allowableTypes = ['image/png', 'image/jpeg', 'image/gif', 'image/webp']
+    const allowableTypes = ['image/png', 'image/jpeg', 'image/gif', 'image/webp', 'image/avif']
     
     if (type === 'json' && allowableTypes.includes(imageData.mime)){    
 
